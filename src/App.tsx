@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LoginPage from "./routes/enterpages/loginPage";
+import UserRouter from "./userRoutes";
+import PasswordPageLogin from "./routes/enterpages/passwordPage_login";
+import PasswordPageSignup from "./routes/enterpages/passwordPage_signUp";
+import GlobalStyle from "./styles/globalStyle";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./styles/colortheme";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/password-login" element={<PasswordPageLogin />} />
+            <Route path="/password-signup" element={<PasswordPageSignup />} />
+            <Route path="/*" element={<UserRouter />} />
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
+    </>
   );
 }
 
