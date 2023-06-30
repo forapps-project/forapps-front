@@ -1,8 +1,7 @@
 import { useState } from "react";
 
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import styled from "styled-components";
+import ModalAlert from "./modalAlert.component";
 
 const StyledDiv = styled.div`
   margin-top: 251px;
@@ -13,32 +12,32 @@ const StyledDiv = styled.div`
   letter-spacing: -0.2px;
 `;
 
+const StyledSpan = styled.span`
+  font-weight: bold;
+`
+
 const Footer = () => {
-  const [show, setShow] = useState<boolean>(false);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   return (
     <>
       <StyledDiv>
         <span>
           로그인 시 몽글 서비스의{" "}
-          <span onClick={() => setShow(true)}>
+          <StyledSpan onClick={openModal}>
             이용약관 및 개인정보 보호정책
-          </span>
+          </StyledSpan>
           에 동의하게 됩니다.
         </span>
       </StyledDiv>
 
-      <Modal show={show}>
-        <Modal.Body>이용약관 및 개인정보 보호정책</Modal.Body>
-        <Modal.Footer>
-          <Button
-            onClick={() => {
-              setShow(false);
-            }}
-          >
-            확인
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <ModalAlert open={modalOpen} close={closeModal} label="개인정보 보호정책" />
     </>
   );
 };

@@ -6,11 +6,8 @@ import { theme } from "../styles/colortheme";
 interface ButtonStyle {
   width?: string;
   height?: string;
-
   hasBorder?: boolean;
-
   borderRadius?: string;
-
   fontSize?: string;
 }
 
@@ -31,9 +28,10 @@ const StyledButton = styled.button`
   border: 1px solid;
   width: 350px;
   height: 48px;
-  border-color: var(--sleeper-blue-1);
-  background: var(--sleeper-blue-1);
-  color: var(--white);
+  color: var(--main-white-1, #fff);
+  border-radius: 12px;
+  border-color: var(--sleeper-blue-1, #5581f1);
+  background: var(--sleeper-blue-1, #5581f1);
 `;
 
 function Button({ className, children, ...rest }: ButtonProps): ReactElement {

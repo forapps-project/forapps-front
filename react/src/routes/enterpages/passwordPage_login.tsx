@@ -18,10 +18,16 @@ const StyledSpan = styled.span`
   letter-spacing: -0.24px;
   width: 100%;
   text-align: end;
+  color: var(--gray-3, #C4C4C4);
+  cursor: pointer;
 `;
 
 const PasswordPageLogin = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [modalOpen2, setModalOpen2] = useState<boolean>(false);
+  const openModal2 = () => {setModalOpen2(true)}
+  const closeModal2 = () => {setModalOpen2(false)}
+
   const openModal = () => {
     setModalOpen(true);
   };
@@ -64,14 +70,14 @@ const PasswordPageLogin = () => {
             <Button type="submit" onClick={handleClick}>
               로그인
             </Button>
-            <StyledSpan onClick={openModal}>비밀번호를 잊으셨나요?</StyledSpan>
+            <StyledSpan onClick={openModal2}>비밀번호를 잊으셨나요?</StyledSpan>
           </StyledDiv>
         </div>
         <Footer />
       </StyledGridDiv>
 
-      <ModalAlert open={modalOpen} close={closeModal} />
-      <ModalAlert open={modalOpen} close={closeModal} />
+      <ModalAlert open={modalOpen} close={closeModal} label="잘못된 비밀번호입니다!" />
+      <ModalAlert open={modalOpen2} close={closeModal2} label={"입력하신 이메일로\n 임시 비밀번호를 전송했습니다:)"} />
     </>
   );
 };

@@ -19,6 +19,7 @@ export const StyledDiv = styled.div`
   gap: 12px;
 
   label {
+    color: var(--gray-3, #C4C4C4);
   }
 
   input {
@@ -30,14 +31,16 @@ export const StyledDiv = styled.div`
     align-items: center;
     gap: 10px;
     border-radius: 8px;
-    border: 1px solid var(--gray-3);
-    border-color: ${props => props.theme.gray3};
-    background: var(--white);
+    border: 1px solid var(--gray-3, #C4C4C4);
+  }
+
+  input::placeholder {
+    color:var(--gray-3, #C4C4C4);
   }
 `;
 
 const EmailForm = () => {
-  const [modalOpen, setModalOpen] = useState<boolean>(true);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
   const openModal = () => {
     setModalOpen(true);
   };
@@ -52,11 +55,12 @@ const EmailForm = () => {
   const handleClick = async (e: any) => {
     e.preventDefault();
     if (email === "") return;
-    /* 서버로 이메일 POST */
     try {
-      const res = await axios.post("url", {
+      const res = await axios.post("http://localhost:8080", {
         email: email,
       });
+      console.log(res.data)
+      gotoPassword("/password-login");
       /* 
       if email already exists in DB
       gotoPassword("/password-login"); //패스워드 로그인 페이지로 이동
@@ -69,6 +73,7 @@ const EmailForm = () => {
       */
     } catch {
       console.log("error occurred");
+      gotoPassword("/password-login");
     }
   };
 
@@ -86,7 +91,7 @@ const EmailForm = () => {
           계속
         </Button>
       </StyledDiv>
-      <ModalAlert open={modalOpen} close={closeModal} />
+      <ModalAlert open={modalOpen} close={closeModal} label="잘못된 이메일입니다!" />
     </>
   );
 };
