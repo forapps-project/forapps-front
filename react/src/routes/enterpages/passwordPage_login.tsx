@@ -44,14 +44,22 @@ const PasswordPageLogin = () => {
     
     /* 서버로 password post */
     try {
-      const res = await axios.post("url", {
+      const res = await axios.post("http://localhost:8080", {
         password: password,
       });
+      /*
+      server: 
+      앞에서 작성한 이메일에 해당하는 패스워드를 찾기
+
+      if 찾았다면 
+      gotoMain("/main"); //메인으로 이동
+
+      else
+      openModal(); //비밀번호 틀렸다는 모달창 띄우기
+      */
     } catch {
-
+      console.log('error occurred')
     }
-
-    gotoMain("/main");
   };
 
   return (

@@ -13,9 +13,22 @@ const PasswordPageSignup = () => {
   const gotoMain = useNavigate();
 
   const handleClick = (e: any) => {
-    if (password === "") return;
     e.preventDefault();
-    gotoMain("/main");
+    if (password === "") return;
+    try {
+      const res = await axios.post("http://localhost:8080", {
+        password: password,
+      });
+      /* 
+      server:
+      패스워드 받아서 DB에 저장(이메일과 함께 키 쌍으로)
+      그리고 닉네임 랜덤 생성
+      gotoMain("/main"); //메인으로 이동
+      */
+    } catch {
+      console.log('error occurred')
+    }
+    
   };
 
   return (
