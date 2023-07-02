@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
     *, *::before, *::after {
@@ -8,6 +8,10 @@ const GlobalStyle = createGlobalStyle`
     body {
         font-family: 'Spoqa Han Sans Neo', 'sans-serif';
     }
-`
+
+    body::-webkit-scrollbar {
+        display: none;
+    }
+`;
 
 export default GlobalStyle;

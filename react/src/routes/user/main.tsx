@@ -1,43 +1,40 @@
-import { useState } from "react";
+import styled from "styled-components";
+import WakeupTime from "../../components/wakeupTime.component";
 
-import { Container, Card, Modal, Button } from "react-bootstrap";
+const StyledHDiv = styled.div`
+  display: grid;
+  grid-template-rows: repeat(2, minmax(10px, auto));
+  height: 100vh;
+  background: linear-gradient(
+    155deg,
+    rgba(41, 41, 41, 1) 60%,
+    rgba(162, 136, 255, 1)
+  );
+`;
 
-import styled from 'styled-components';
-
-const StyledH4 = styled.h4`
-
+const LogoBox = styled.div`
+grid-row: 1/2;
 `
 
+const LogoText = styled.h4`
+  color: var(--white, #fff);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.48px;
+  margin-left: 20px;
+  margin-top: 13px;
+`;
+
 const Main = () => {
-  const [show, setShow] = useState(false);
-  const onClick = () => {
-    setShow(true);
-  };
-
   return (
-    <>
-      <Container fluid className="mt-5">
-        <Container>
-          <h4>지금 잠에 들면 N시간 잘 수 있어요</h4>
-          <span onClick={onClick}>기상시간 변경하기</span>
-        </Container>
-        <Card>추천 콘텐츠 1</Card>
-        <Card>추천 콘텐츠 2</Card>
-      </Container>
-
-      <Modal show={show}>
-        <Modal.Body>기상시간 변경</Modal.Body>
-        <Modal.Footer>
-          <Button
-            onClick={() => {
-              setShow(false);
-            }}
-          >
-            변경하기
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
+    <StyledHDiv>
+      <LogoBox>
+        <LogoText>몽글</LogoText>
+      </LogoBox>
+      <WakeupTime />
+    </StyledHDiv>
   );
 };
 

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import WelcomeMsg from "../../components/welcomeMsg";
 import Footer from "../../components/footer";
@@ -12,7 +13,7 @@ const PasswordPageSignup = () => {
   const [password, setPassword] = useState<string>("");
   const gotoMain = useNavigate();
 
-  const handleClick = (e: any) => {
+  const handleClick = async (e: any) => {
     e.preventDefault();
     if (password === "") return;
     try {

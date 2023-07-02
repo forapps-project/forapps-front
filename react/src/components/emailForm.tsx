@@ -6,6 +6,7 @@ import styled from "styled-components";
 import Button from "./button.component";
 import { theme } from "../styles/colortheme";
 import ModalAlert from "./modalAlert.component";
+import { useModal } from "../hooks/useModal";
 
 export const StyledDiv = styled.div`
   display: flex;
@@ -33,23 +34,20 @@ export const StyledDiv = styled.div`
     border: 1px solid var(--gray-3, #C4C4C4);
   }
 
+  input:focus {
+    border-color: var(--sleeper-blue-1, #5581f1);
+  }
+
   input::placeholder {
     color:var(--gray-3, #C4C4C4);
   }
 `;
 
 const EmailForm = () => {
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const openModal = () => {
-    setModalOpen(true);
-  };
-  const closeModal = () => {
-    setModalOpen(false);
-  };
+  const {ModalAlert, isModalOpen, openModal, closeModal} = useModal();
 
   const [email, setEmail] = useState<string>("");
   const gotoPassword = useNavigate();
-
 
   const handleClick = async (e: any) => {
     e.preventDefault();
@@ -90,7 +88,7 @@ const EmailForm = () => {
           계속
         </Button>
       </StyledDiv>
-      <ModalAlert open={modalOpen} close={closeModal} label="잘못된 이메일입니다!" />
+      <ModalAlert isModalOpen={isModalOpen} close={closeModal} label="잘못된 이메일입니다!" />
     </>
   );
 };

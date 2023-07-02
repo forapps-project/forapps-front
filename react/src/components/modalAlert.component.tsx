@@ -5,9 +5,10 @@ import styled from "styled-components";
 import "./modalAlert.styles.css";
 
 interface modalProps {
-  open: boolean;
+  isModalOpen: boolean;
   close(): void;
   label: string;
+  additional?: any;
 }
 
 const ModalButton = styled(Button)`
@@ -27,16 +28,17 @@ const Contents = styled.h6`
   white-space: pre-wrap;
 `;
 
-const ModalAlert = ({ open, close, label }: modalProps) => {
+const ModalAlert = ({ isModalOpen, close, label, additional }: modalProps) => {
   return (
     <Modal
       centered
-      show={open}
+      show={isModalOpen}
       dialogClassName="border-radius-2"
       className="d-flex flex-column justify-content-center align-items-center"
     >
       <Modal.Body className="modal-header border-0 d-flex flex-column justify-content-center align-items-center">
         <Contents>{label.split("\n").map((letter)=>(<>{letter}<br /></>))}</Contents>
+        {additional ? <Contents>{additional}</Contents> : null}
       </Modal.Body>
       <Modal.Footer className="modal-header border-0">
         <ModalButton className="close" onClick={close}>

@@ -1,7 +1,5 @@
-import { useState } from "react";
-
 import styled from "styled-components";
-import ModalAlert from "./modalAlert.component";
+import { useModal } from "../hooks/useModal";
 
 const StyledDiv = styled.div`
   margin-top: 251px;
@@ -17,13 +15,7 @@ const StyledSpan = styled.span`
 `
 
 const Footer = () => {
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const openModal = () => {
-    setModalOpen(true);
-  };
-  const closeModal = () => {
-    setModalOpen(false);
-  };
+  const {ModalAlert, isModalOpen, openModal, closeModal} = useModal();
 
   return (
     <>
@@ -37,7 +29,7 @@ const Footer = () => {
         </span>
       </StyledDiv>
 
-      <ModalAlert open={modalOpen} close={closeModal} label="개인정보 보호정책" />
+      <ModalAlert isModalOpen={isModalOpen} close={closeModal} label="개인정보 보호정책" />
     </>
   );
 };

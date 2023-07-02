@@ -11,6 +11,7 @@ import { StyledDiv } from "../../components/emailForm";
 import { StyledGridDiv } from "./loginPage";
 import Button from "../../components/button.component";
 import ModalAlert from "../../components/modalAlert.component";
+import { useModal } from "../../hooks/useModal";
 
 const StyledSpan = styled.span`
   font-size: 12px;
@@ -23,17 +24,13 @@ const StyledSpan = styled.span`
 `;
 
 const PasswordPageLogin = () => {
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const {ModalAlert, isModalOpen, openModal, closeModal} = useModal();
+
   const [modalOpen2, setModalOpen2] = useState<boolean>(false);
   const openModal2 = () => {setModalOpen2(true)}
   const closeModal2 = () => {setModalOpen2(false)}
 
-  const openModal = () => {
-    setModalOpen(true);
-  };
-  const closeModal = () => {
-    setModalOpen(false);
-  };
+
 
   const [password, setPassword] = useState<string>("");
   const gotoMain = useNavigate();
@@ -84,8 +81,8 @@ const PasswordPageLogin = () => {
         <Footer />
       </StyledGridDiv>
 
-      <ModalAlert open={modalOpen} close={closeModal} label="잘못된 비밀번호입니다!" />
-      <ModalAlert open={modalOpen2} close={closeModal2} label={"입력하신 이메일로\n 임시 비밀번호를 전송했습니다:)"} />
+      <ModalAlert isModalOpen={isModalOpen} close={closeModal} label="잘못된 비밀번호입니다!" />
+      <ModalAlert isModalOpen={modalOpen2} close={closeModal2} label={"입력하신 이메일로\n 임시 비밀번호를 전송했습니다:)"} />
     </>
   );
 };
