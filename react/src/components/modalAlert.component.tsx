@@ -26,6 +26,7 @@ const Contents = styled.h6`
   text-align: center;
   margin-top: 36px;
   white-space: pre-wrap;
+  color: var(--gray-1, #4D4D4D);
 `;
 
 const ModalAlert = ({ isModalOpen, close, label, additional }: modalProps) => {

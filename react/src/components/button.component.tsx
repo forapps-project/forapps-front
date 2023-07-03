@@ -26,7 +26,7 @@ const StyledButton = styled.button`
   flex-shrink: 0;
   border-radius: 8px;
   border: 1px solid;
-  width: 350px;
+  width: 100%;
   height: 48px;
   color: var(--main-white-1, #fff);
   border-radius: 12px;
@@ -36,9 +36,9 @@ const StyledButton = styled.button`
 
 function Button({ className, children, ...rest }: ButtonProps): ReactElement {
   return (
-    <StyledButton className={className} {...rest}>
-      {children}
-    </StyledButton>
+      <StyledButton className={className} {...rest}>
+        {children}
+      </StyledButton>
   );
 }
 

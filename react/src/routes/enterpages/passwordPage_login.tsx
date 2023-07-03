@@ -1,17 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Modal } from "react-bootstrap";
 
 import WelcomeMsg from "../../components/welcomeMsg";
 import Footer from "../../components/footer";
-
-import styled from "styled-components";
 import { StyledDiv } from "../../components/emailForm";
 import { StyledGridDiv } from "./loginPage";
 import Button from "../../components/button.component";
-import ModalAlert from "../../components/modalAlert.component";
 import { useModal } from "../../hooks/useModal";
+
+import styled from "styled-components";
 
 const StyledSpan = styled.span`
   font-size: 12px;
@@ -30,11 +28,9 @@ const PasswordPageLogin = () => {
   const openModal2 = () => {setModalOpen2(true)}
   const closeModal2 = () => {setModalOpen2(false)}
 
-
-
   const [password, setPassword] = useState<string>("");
   const gotoMain = useNavigate();
-
+  
   const handleClick = async (e: any) => {
     e.preventDefault();
     if (password === "") return;

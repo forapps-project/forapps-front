@@ -23,8 +23,8 @@ const LogoText = styled.h4`
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.48px;
-  margin-left: 20px;
-  margin-top: 13px;
+  margin-left: 5%;
+  margin-top: 14px;
 `;
 
 const Main = () => {

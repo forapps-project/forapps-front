@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+        height: 100vh;
     }
 
     body::-webkit-scrollbar {

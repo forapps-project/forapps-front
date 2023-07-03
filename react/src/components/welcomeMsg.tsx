@@ -3,7 +3,7 @@ import styled from "styled-components";
 const StyledDiv = styled.div`
   width: 270px;
   height: 105px;
-  margin-left: 20px;
+  margin-left: 5%;
   margin-top: 70px;
   margin-right: 100px;
   margin-bottom: 113px;
@@ -15,6 +15,7 @@ const StyledDiv = styled.div`
     letter-spacing: -0.56px;
     color: #202020;
   }
+  
   span {
     color: var(--sleeper-blue-2, #6b85f7);
   }

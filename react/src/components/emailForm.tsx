@@ -11,11 +11,11 @@ import { useModal } from "../hooks/useModal";
 export const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
-  width: 350px;
+  width: 89%;
   height: 160px;
   flex-shrink: 0;
-  margin-left: 1.25rem;
-  margin-right: 1.25rem;
+  margin-left: 5%;
+  margin-right: 5%;
   gap: 12px;
 
   label {
@@ -25,7 +25,7 @@ export const StyledDiv = styled.div`
   input {
     margin-bottom: 20px;
     display: flex;
-    width: 350px;
+    width: 100%;
     height: 48px;
     padding: 14px 10px;
     align-items: center;
@@ -89,6 +89,9 @@ const EmailForm = () => {
         </Button>
       </StyledDiv>
       <ModalAlert isModalOpen={isModalOpen} close={closeModal} label="잘못된 이메일입니다!" />
+
+
+
     </>
   );
 };
