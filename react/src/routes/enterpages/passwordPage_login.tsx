@@ -37,7 +37,7 @@ const PasswordPageLogin = () => {
     
     /* 서버로 password post */
     try {
-      const res = await axios.post("http://localhost:8080", {
+      const res = await axios.post("/", {
         password: password,
       });
       /*

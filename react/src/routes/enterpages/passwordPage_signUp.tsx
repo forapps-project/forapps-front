@@ -17,7 +17,7 @@ const PasswordPageSignup = () => {
     e.preventDefault();
     if (password === "") return;
     try {
-      const res = await axios.post("http://localhost:8080", {
+      const res = await axios.post("/", {
         password: password,
       });
       /* 

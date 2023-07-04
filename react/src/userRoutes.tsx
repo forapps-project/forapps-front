@@ -8,7 +8,7 @@ const UserRouter = () => {
     <>
       <Navigation />
       <Routes>
-        <Route path="/main" element={<Main />} />
+          <Route path="/main" element={<Main />} />
       </Routes>
     </>
   );

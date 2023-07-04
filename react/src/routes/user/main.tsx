@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import WakeupTime from "../../components/wakeupTime.component";
+import ContentsBox from "../../components/contentsBox.component";
 
 const StyledHDiv = styled.div`
   display: grid;
@@ -34,6 +35,7 @@ const Main = () => {
         <LogoText>몽글</LogoText>
       </LogoBox>
       <WakeupTime />
+      <ContentsBox />
     </StyledHDiv>
   );
 };

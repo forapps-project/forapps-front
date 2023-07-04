@@ -5,7 +5,10 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"npm run backend\" npm run start --prefix react\""
+    "dev": "concurrently \"npm run dev:server\" \" npm run dev:react\"",
+    "start": "nodemon index.js",
+    "dev:server": "npm start",
+    "dev:react": "cd react && npm start"
   },
   "author": "",
   "license": "ISC",

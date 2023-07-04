@@ -1,21 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import ReactModal from 'react-modal';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+import reportWebVitals from "./reportWebVitals";
+import "bootstrap/dist/css/bootstrap.min.css";
+import ReactModal from "react-modal";
 
-import './index.styles.css';
+import "./index.styles.css";
+import WakeUpTimeProvider from "./components/TimesettingReducer";
 
-ReactModal.setAppElement('#root');
+ReactModal.setAppElement("#root");
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <WakeUpTimeProvider>
+      <App />
+    </WakeUpTimeProvider>
   </React.StrictMode>
 );
 

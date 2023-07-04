@@ -5,7 +5,6 @@ import axios from "axios";
 import styled from "styled-components";
 import Button from "./button.component";
 import { theme } from "../styles/colortheme";
-import ModalAlert from "./modalAlert.component";
 import { useModal } from "../hooks/useModal";
 
 export const StyledDiv = styled.div`
@@ -19,7 +18,7 @@ export const StyledDiv = styled.div`
   gap: 12px;
 
   label {
-    color: var(--gray-3, #C4C4C4);
+    color: var(--gray-3, #c4c4c4);
   }
 
   input {
@@ -31,7 +30,7 @@ export const StyledDiv = styled.div`
     align-items: center;
     gap: 10px;
     border-radius: 8px;
-    border: 1px solid var(--gray-3, #C4C4C4);
+    border: 1px solid var(--gray-3, #c4c4c4);
   }
 
   input:focus {
@@ -39,12 +38,12 @@ export const StyledDiv = styled.div`
   }
 
   input::placeholder {
-    color:var(--gray-3, #C4C4C4);
+    color: var(--gray-3, #c4c4c4);
   }
 `;
 
 const EmailForm = () => {
-  const {ModalAlert, isModalOpen, openModal, closeModal} = useModal();
+  const { ModalAlert, isModalOpen, openModal, closeModal } = useModal();
 
   const [email, setEmail] = useState<string>("");
   const gotoPassword = useNavigate();
@@ -53,11 +52,11 @@ const EmailForm = () => {
     e.preventDefault();
     if (email === "") return;
     try {
-      const res = await axios.post("http://localhost:8080", {
+      const res = await axios.post("/", {
         email: email,
       });
-      console.log(res.data)
-      gotoPassword("/password-login");
+      console.log(res.data);
+      //gotoPassword("/password-login");
       /* 
       if email already exists in DB
       gotoPassword("/password-login"); //패스워드 로그인 페이지로 이동
@@ -88,10 +87,11 @@ const EmailForm = () => {
           계속
         </Button>
       </StyledDiv>
-      <ModalAlert isModalOpen={isModalOpen} close={closeModal} label="잘못된 이메일입니다!" />
-
-
-
+      <ModalAlert
+        isModalOpen={isModalOpen}
+        close={closeModal}
+        label="잘못된 이메일입니다!"
+      />
     </>
   );
 };
