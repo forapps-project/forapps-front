@@ -36,10 +36,6 @@ const WakeupTime = () => {
   let { HOUR, MIN } = elapsedTime;
   const interval = useRef(elapsedTime);
 
-  
-
-  
-
 
   let currentTime = null;
   let today = new Date();
