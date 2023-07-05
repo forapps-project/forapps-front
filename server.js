@@ -1,43 +1,45 @@
-/* const express = require('express')
-const app = express()
-const path = require('path')
-const _dirname = path.resolve();
-
-app.listen(8080, function(){
-    console.log('listening on 8080')
-})
-
-app.use(express.json());
-var cors = require('cors');
-app.use(cors());
-
-app.use(express.static(path.join(_dirname + 'react/build')));
-
-app.get('/', function(req,res){
-    res.sendFile(path.join(_dirname + '/react/public/index.html'));
-})
-
-app.get('/product', function(req,res){
-    res.json({name:'black shoes'});
-})
- */
-
-
-//박세화
-const express = require("express");
-const bodyParser = require('body-parser')
+const express = require('express');
 const app = express();
+const mysql = require('mysql');
+const PORT = process.env.port || 8000;
+const cors = require('cors');
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+const con = mysql.createConnection({
+    host:'localhost',
+    user:'enrhd',
+    password:'1q2w3e',
+    port:3306,
+    database:'account',
+});
 
-const port = process.env.PORT || 5000;
-app.listen(port);
+let corsOptions = {
+    origin: "*", // 출처 허용 옵션
+    credential: true, // 사용자 인증이 필요한 리소스(쿠키 ..등) 접근
+  };
+  
+  app.use(cors(corsOptions));
 
-app.post("/", (req,res)=>{
-    const email = req.body.email;
-    res.send(`your email is ${email}`) 
-    //이 부분에 이메일이 DB에 있는지 확인하는 코드 작성하시면 됩니다
+  app.get("/", (req, res) => {
+      const q = `insert into user ('id','username', 'password') values (0,'enrhd', '1q2w3e');`
+      const values = ["id","username", "password"]
+    
+      con.query(q, [values], (err, data) => {
+        console.log(err);
+        res.send('success!');
+      })
+    })
+
+app.get("/user",(req,res)=>{
+        const query = "select * from user"
+        con.query(query,(err,data)=>{
+            if(err) return res.json(err)
+            return res.json(data)
+        })
+    });
+
+
+app.use(express.json())
+
+app.listen(PORT, ()=>{
+    console.log(`running on port ${PORT}`);
 })
-
-console.log(`server running at http ${port}`);
