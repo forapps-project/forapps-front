@@ -56,7 +56,7 @@ const EmailForm = () => {
         email: email,
       });
       console.log(res.data);
-      //gotoPassword("/password-login");
+      gotoPassword("/password-login");
       /* 
       if email already exists in DB
       gotoPassword("/password-login"); //패스워드 로그인 페이지로 이동

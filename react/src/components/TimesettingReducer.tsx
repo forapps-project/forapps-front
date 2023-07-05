@@ -53,10 +53,17 @@ export const TimeSettingReducer = (
         minute: minute - 1,
       };
     case "MD_CHANGE":
+      if (md==="AM") {
+        return {
+          ...state,
+            md: "PM",
+        }
+      } else {
         return {
             ...state,
-            md
+            md: "AM"
         }
+      }
     default:
       return state;
   }
