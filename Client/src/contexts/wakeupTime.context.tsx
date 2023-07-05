@@ -33,36 +33,63 @@ export const TimeSettingReducer = (
 
   switch (type) {
     case "HOUR_INCREASE":
-      return {
-        ...state,
-        hour: hour + 1,
-      };
-    case "HOUR_DECREASE":
-      return {
-        ...state,
-        hour: hour - 1,
-      };
-    case "MINUTE_INCREASE":
-      return {
-        ...state,
-        minute: minute + 1,
-      };
-    case "MINUTE_DECREASE":
-      return {
-        ...state,
-        minute: minute - 1,
-      };
-    case "MD_CHANGE":
-      if (md==="AM") {
+      if (hour <= 11) {
         return {
           ...state,
-            md: "PM",
-        }
+          hour: hour + 1,
+        };
       } else {
         return {
-            ...state,
-            md: "AM"
+          ...state,
+        };
+      }
+    case "HOUR_DECREASE":
+      if (hour >= 2) {
+        return {
+          ...state,
+          hour: hour - 1,
+        };
+      } else {
+        return {
+          ...state,
+        };
+      }
+
+    case "MINUTE_INCREASE":
+      if (minute<=58) {
+        return {
+          ...state,
+          minute: minute + 1,
+        };
+      } else {
+        return {
+          ...state
         }
+      }
+      
+    case "MINUTE_DECREASE":
+      if (minute>=1) {
+        return {
+          ...state,
+          minute: minute - 1,
+        };
+      } else {
+        return {
+          ...state
+        }
+      }
+      
+    case "MD_CHANGE":
+      if (md === "AM") {
+        return {
+          ...state,
+          md: "PM",
+        };
+      } else {
+        return {
+          ...state,
+          md: "AM",
+        };
       }
     default:
       return state;

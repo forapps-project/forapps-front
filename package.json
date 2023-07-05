@@ -4,11 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"npm run dev:server\" \" npm run dev:react\"",
-    "start": "nodemon index.js",
-    "dev:server": "npm start",
-    "dev:react": "cd react && npm start"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +14,7 @@
     "concurrently": "^8.2.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "http": "^0.0.1-security",
     "http-proxy-middleware": "^2.0.6",
     "nodemon": "^2.0.22",

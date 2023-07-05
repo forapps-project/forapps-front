@@ -7,7 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ReactModal from "react-modal";
 
 import "./index.styles.css";
-import WakeUpTimeProvider from "./components/TimesettingReducer";
+import WakeUpTimeProvider from "./contexts/wakeupTime.context";
 
 ReactModal.setAppElement("#root");
 
