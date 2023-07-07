@@ -2,7 +2,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "./button.component";
 
 import styled from "styled-components";
-import "./modalAlert.styles.css";
+import "../styles/modalAlert.styles.css"
 
 interface modalProps {
   isModalOpen: boolean;

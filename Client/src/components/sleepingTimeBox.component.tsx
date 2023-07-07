@@ -1,8 +1,8 @@
 import { useEffect, useState, useContext, useRef } from "react";
 import axios from "axios";
-//import "react-datepicker/dist/react-datepicker.css";
+import { ReactComponent as Refresh } from "../icons/Refresh.svg";
 
-import { WakeUpTimeContext } from "../contexts/wakeupTime.context";
+import { WakeUpTimeContext } from "../contexts/wakeupTimeReducer.context";
 import { useModal } from "../hooks/useModal";
 import { ReactComponent as Expand } from "../icons/Expand.svg";
 
@@ -13,11 +13,11 @@ import {
   SleepingHour,
   NickNameText,
   Text,
-} from "./sleepingTimeBox.styles";
+} from "../styles/sleepingTimeBox.styles";
 import WakeupTimeSetting from "./wakeupTimeSetting.component";
 
 const SleepingTimeBox = () => {
-  const { ModalAlert, isModalOpen, openModal, closeModal } = useModal();
+  const { Modal, isModalOpen, openModal, closeModal } = useModal();
   const { hour, minute, md } = useContext(WakeUpTimeContext);
 
   let USER_NAME = "꿈꾸는 여행자";
@@ -44,17 +44,19 @@ const SleepingTimeBox = () => {
 
   //기상시간
   let wakeupTime = null;
-  if (hours <= 11) { //현재시각이 오전
+  if (hours <= 11) {
+    //현재시각이 오전
     if (md === "PM") {
       wakeupTime = new Date(year, month, day, hour + 12, minute);
     } else {
       wakeupTime = new Date(year, month, day, hour + 12, minute);
     }
-  } else { //현재가 오후
+  } else {
+    //현재가 오후
     if (md === "PM") {
-      wakeupTime = new Date(year, month, day+1, hour + 12, minute);
+      wakeupTime = new Date(year, month, day + 1, hour + 12, minute);
     } else {
-      wakeupTime = new Date(year, month, day+1, hour, minute);
+      wakeupTime = new Date(year, month, day + 1, hour, minute);
     }
   }
 
@@ -71,6 +73,11 @@ const SleepingTimeBox = () => {
       <WakeupBox>
         <SleepingComent>
           <NickNameText>{`${USER_NAME}님,`}</NickNameText>
+          <Refresh
+            onClick={() => {
+              window.location.replace("/main");
+            }}
+          />
           <br></br>
           <Text>
             지금 잠들면{" "}
@@ -86,7 +93,11 @@ const SleepingTimeBox = () => {
         </WakeupSetting>
       </WakeupBox>
 
-      <ModalAlert
+      <Modal
+        width="330px"
+        height="343px"
+        background="#4D4D4D"
+        textColor="#FFF"
         isModalOpen={isModalOpen}
         close={closeModal}
         label="목표 기상 시간"

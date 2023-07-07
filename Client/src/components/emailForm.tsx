@@ -43,7 +43,7 @@ export const StyledDiv = styled.div`
 `;
 
 const EmailForm = () => {
-  const { ModalAlert, isModalOpen, openModal, closeModal } = useModal();
+  const { Modal, isModalOpen, openModal, closeModal } = useModal();
 
   const [email, setEmail] = useState<string>("");
   const gotoPassword = useNavigate();
@@ -87,7 +87,7 @@ const EmailForm = () => {
           계속
         </Button>
       </StyledDiv>
-      <ModalAlert
+      <Modal
         isModalOpen={isModalOpen}
         close={closeModal}
         label="잘못된 이메일입니다!"

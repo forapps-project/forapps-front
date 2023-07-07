@@ -1,22 +1,34 @@
-import { useState } from 'react';
-import ModalAlert from '../components/modalAlert.component';
-
+import { useState } from "react";
+import Modal from "../components/Modal";
 
 export const useModal = () => {
-    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  /* 
+  const { open, close } = useContext(ModalsDispatchContext);
 
-    const openModal = ():void => {
-      setIsModalOpen(true);
-    };
-    const closeModal = ():void => {
-      setIsModalOpen(false);
-    };
+  const openModal = (Component, props) => {
+    open(Component, props);
+  };
 
-    return {
-        ModalAlert,
-        isModalOpen,
-        openModal,
-        closeModal
-    };
-}
+  const closeModal = (Component) => {
+    close(Component)
+  }
+  */
+
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const openModal = (): void => {
+    setIsModalOpen(true);
+  };
+  const closeModal = (): void => {
+    setIsModalOpen(false);
+  };
+
+  return {
+    Modal,
+    isModalOpen,
+    openModal,
+    closeModal,
+  };
+};
+
 

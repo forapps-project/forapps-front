@@ -22,7 +22,7 @@ const StyledSpan = styled.span`
 `;
 
 const PasswordPageLogin = () => {
-  const {ModalAlert, isModalOpen, openModal, closeModal} = useModal();
+  const {Modal, isModalOpen, openModal, closeModal} = useModal();
 
   const [modalOpen2, setModalOpen2] = useState<boolean>(false);
   const openModal2 = () => {setModalOpen2(true)}
@@ -77,8 +77,8 @@ const PasswordPageLogin = () => {
         <Footer />
       </StyledGridDiv>
 
-      <ModalAlert isModalOpen={isModalOpen} close={closeModal} label="잘못된 비밀번호입니다!" />
-      <ModalAlert isModalOpen={modalOpen2} close={closeModal2} label={"입력하신 이메일로\n 임시 비밀번호를 전송했습니다:)"} />
+      <Modal isModalOpen={isModalOpen} close={closeModal} label="잘못된 비밀번호입니다!" />
+      <Modal isModalOpen={modalOpen2} close={closeModal2} label={"입력하신 이메일로\n 임시 비밀번호를 전송했습니다:)"} />
     </>
   );
 };

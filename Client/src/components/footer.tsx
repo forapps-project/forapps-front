@@ -15,7 +15,7 @@ const StyledSpan = styled.span`
 `;
 
 const Footer = () => {
-  const { ModalAlert, isModalOpen, openModal, closeModal } = useModal();
+  const { Modal, isModalOpen, openModal, closeModal } = useModal();
 
   return (
     <>
@@ -29,7 +29,7 @@ const Footer = () => {
         </span>
       </StyledDiv>
 
-      <ModalAlert
+      <Modal
         isModalOpen={isModalOpen}
         close={closeModal}
         label="개인정보 보호정책"

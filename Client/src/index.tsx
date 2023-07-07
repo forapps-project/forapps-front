@@ -7,7 +7,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ReactModal from "react-modal";
 
 import "./index.styles.css";
-import WakeUpTimeProvider from "./contexts/wakeupTime.context";
+import WakeUpTimeProvider from "./contexts/wakeupTimeReducer.context";
+import ModalsProvider from "./contexts/modalContext";
 
 ReactModal.setAppElement("#root");
 
@@ -16,9 +17,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <WakeUpTimeProvider>
-      <App />
-    </WakeUpTimeProvider>
+    <ModalsProvider>
+      <WakeUpTimeProvider>
+        <App />
+      </WakeUpTimeProvider>
+    </ModalsProvider>
   </React.StrictMode>
 );
 

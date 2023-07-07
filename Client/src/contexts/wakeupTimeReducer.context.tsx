@@ -4,13 +4,13 @@ interface wakeuptimeProviderProps {
   children: ReactNode;
 }
 
-interface wakeUpTime {
+export interface wakeUpTime {
   hour: number;
   minute: number;
   md: string;
 }
 
-const INITIAL_VALUE: wakeUpTime = {
+export const INITIAL_VALUE: wakeUpTime = {
   hour: 8,
   minute: 0,
   md: "AM",
@@ -18,6 +18,7 @@ const INITIAL_VALUE: wakeUpTime = {
 
 interface actionType {
   type: string;
+  payload?: any;
 }
 
 export const WakeUpTimeContext = createContext({} as wakeUpTime);
@@ -28,7 +29,7 @@ export const TimeSettingReducer = (
   state: wakeUpTime,
   action: actionType
 ): wakeUpTime => {
-  const { type } = action;
+  const { type, payload } = action;
   const { hour, minute, md } = state;
 
   switch (type) {
@@ -51,46 +52,55 @@ export const TimeSettingReducer = (
         };
       } else {
         return {
+          
           ...state,
         };
       }
 
+    case "HOUR_INPUT_CHANGE":
+      return {
+        ...state, hour: payload
+      }
+
     case "MINUTE_INCREASE":
-      if (minute<=58) {
+      if (minute <= 58) {
         return {
           ...state,
           minute: minute + 1,
         };
       } else {
         return {
-          ...state
-        }
+          ...state,
+        };
       }
-      
+
     case "MINUTE_DECREASE":
-      if (minute>=1) {
+      if (minute >= 1) {
         return {
           ...state,
           minute: minute - 1,
         };
       } else {
         return {
-          ...state
-        }
-      }
-      
-    case "MD_CHANGE":
-      if (md === "AM") {
-        return {
           ...state,
-          md: "PM",
-        };
-      } else {
-        return {
-          ...state,
-          md: "AM",
         };
       }
+
+    case "MINUTE_INPUT_CHANGE":
+    return {
+      ...state, minute: payload
+    }
+
+    case "CHANGE_TO_AM":
+      return {
+        ...state,
+        md: "AM",
+      };
+    case "CHANGE_TO_PM":
+      return {
+        ...state,
+        md: "PM",
+      };
     default:
       return state;
   }
@@ -103,6 +113,9 @@ const WakeUpTimeProvider = ({ children }: wakeuptimeProviderProps) => {
   );
 
   const value: wakeUpTime = { hour, minute, md };
+
+  localStorage.setItem('user-wakeup-time', JSON.stringify(value))
+  
 
   return (
     <DispatchContext.Provider value={dispatch}>

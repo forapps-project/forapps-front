@@ -1,4 +1,42 @@
-import { ReactNode, createContext, useState, useMemo } from 'react';
+import { ReactElement, createContext, useState, useMemo } from 'react';
+
+interface ModalsProviderProps {
+    children: ReactElement | ReactElement[]
+}
+
+export const ModalsDispatchContext = createContext<{
+    openModal: () => void;
+    closeModal: () => void;
+}>({
+    openModal: () => {return;},
+    closeModal:() => {return;}
+});
+
+export const ModalsStateContext = createContext<boolean|null>(false)
+
+const ModalsProvider = ({children}:ModalsProviderProps) => {
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false)
+    }
+
+    const dispatch = { openModal, closeModal };
+
+    return (
+        <ModalsStateContext.Provider value={isModalOpen}>
+            <ModalsDispatchContext.Provider value={dispatch}>
+                {children}
+            </ModalsDispatchContext.Provider>
+        </ModalsStateContext.Provider>
+    )
+}
+
+export default ModalsProvider;
 
 /* interface openFunc {
     (Component: ReactNode, props: string[]): void
