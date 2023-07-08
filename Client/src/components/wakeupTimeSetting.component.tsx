@@ -62,10 +62,17 @@ const WakeupTimeSetting = () => {
 
   const onChange = (e: any) => {
     const { name, value } = e.target;
-    setTime({
-      ...time,
-      [name]: value,
-    });
+    let newValue = parseInt(e.target.value);
+    console.log(newValue)
+    if (name==="hour") {
+      if (newValue > 12) {
+        newValue = 12
+      } 
+      setTime({...time, hour: newValue});
+      dispatch({ type: "HOUR_INPUT_CHANGE", payload: newValue });
+    }
+
+
     if (name === "hour") {
       dispatch({ type: "HOUR_INPUT_CHANGE", payload: e.target.value });
     } else {
@@ -83,7 +90,7 @@ const WakeupTimeSetting = () => {
         />
         <input
           name="hour"
-          defaultValue="number"
+          type="number"
           value={hour}
           onChange={onChange}
         ></input>
@@ -103,7 +110,7 @@ const WakeupTimeSetting = () => {
         <input
           name="minute"
           type="number"
-          defaultValue={minute}
+          value={minute}
           onChange={onChange}
         ></input>
         <MiniButton
