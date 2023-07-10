@@ -2,26 +2,30 @@ import styled from "styled-components";
 import ContentsBox from "../../components/contentsBox.component";
 import SleepingTimeBox from "../../components/sleepingTimeBox.component";
 
+import background from "../../images/main-background.png";
+
 const StyledHDiv = styled.div`
   display: grid;
   grid-template-rows: repeat(2, minmax(10px, auto));
   height: 100vh;
-  background: linear-gradient(
+  /* background: linear-gradient(
     155deg,
     rgba(41, 41, 41, 1) 60%,
     rgba(162, 136, 255, 1)
-  );
+  ); */
+  background-image: url(${background});
 `;
 
 const LogoBox = styled.div`
-grid-row: 1/2;
-`
+  grid-row: 1/2;
+`;
 
 const LogoText = styled.h4`
   color: var(--white, #fff);
+  font-family: Jalnan OTF;
   font-size: 24px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700;
   line-height: normal;
   letter-spacing: -0.48px;
   margin-left: 5%;

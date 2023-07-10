@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useModal } from "../hooks/useModal";
 
 const StyledDiv = styled.div`
-width: 240px;
+  width: 240px;
   position: absolute;
   bottom: 71px;
   left: 50%;
@@ -25,7 +25,7 @@ const Footer = () => {
     <>
       <StyledDiv>
         <span>
-          로그인 시 몽글 서비스의{" "}<br></br>
+          로그인 시 몽글 서비스의 <br></br>
           <StyledSpan onClick={openModal}>
             이용약관 및 개인정보 보호정책
           </StyledSpan>
@@ -34,6 +34,7 @@ const Footer = () => {
       </StyledDiv>
 
       <Modal
+        success={false}
         isModalOpen={isModalOpen}
         close={closeModal}
         label="개인정보 보호정책"

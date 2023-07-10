@@ -46,10 +46,10 @@ const activeStyle = {
   color: "#FFD954"
 }
 
-const IconBox = ({ key, icon, text, route }: IconBoxProps) => {
+const IconBox = ({ icon, text, route }: IconBoxProps) => {
     return (
       <StyledDiv>
-        <NavLink to={route} style={({isActive}) => (isActive ? activeStyle :linkStyle)} key={key}>
+        <NavLink to={route} style={({isActive}) => (isActive ? activeStyle :linkStyle)}>
           {icon}
         </NavLink>
         <Text>{text}</Text>

@@ -3,8 +3,10 @@ import Button from "./button.component";
 import { useModal } from "../hooks/useModal";
 
 interface modalProps {
+  success: boolean;
   isModalOpen: boolean;
-  close(): void;
+  close?(): void;
+  successFunc?(): void;
   label: string;
   additional?: any;
   width: string;
@@ -96,10 +98,12 @@ const ModalButton = styled(Button)`
 `;
 
 const Modal = ({
+  success,
   isModalOpen,
   additional,
   label,
   close,
+  successFunc,
   width,
   height,
   background,
@@ -125,7 +129,7 @@ const Modal = ({
                 <Contents textColor={textColor}>{additional}</Contents>
               ) : null}
             </Body>
-            <ModalButton className="close" onClick={close}>
+            <ModalButton className="close" onClick={success? successFunc : close}>
               확인
             </ModalButton>
           </InsideBox>
@@ -141,7 +145,7 @@ Modal.defaultProps = {
   height: "180px",
   background: "#FFF",
   textColor: "#4D4D4D",
-  dimmed:"rgba(32, 32, 32, 0.80)"
+  dimmed:"rgba(0, 0, 0, 0.60);"
 };
 
 

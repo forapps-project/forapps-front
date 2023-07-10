@@ -23,11 +23,16 @@ export const useModal = () => {
     setIsModalOpen(false);
   };
 
+  const successFunc = (): void => {
+    closeModal();
+  }
+
   return {
     Modal,
     isModalOpen,
     openModal,
     closeModal,
+    successFunc,
   };
 };
 

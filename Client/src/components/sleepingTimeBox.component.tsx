@@ -15,9 +15,10 @@ import {
   Text,
 } from "../styles/sleepingTimeBox.styles";
 import WakeupTimeSetting from "./wakeupTimeSetting.component";
+import WakeupSetting2 from "./wakeupSetting2";
 
 const SleepingTimeBox = () => {
-  const { Modal, isModalOpen, openModal, closeModal } = useModal();
+  const { Modal, isModalOpen, openModal, closeModal, successFunc } = useModal();
   const { hour, minute, md } = useContext(WakeUpTimeContext);
 
   let USER_NAME = "꿈꾸는 여행자";
@@ -29,9 +30,12 @@ const SleepingTimeBox = () => {
     getUserName();
   },[]) */
 
+
+
   //현재시간
   const [elapsedTime, setElapsedTime] = useState({ HOUR: 0, MIN: 0 });
   let { HOUR, MIN } = elapsedTime;
+
 
   let currentTime = null;
   let today = new Date();
@@ -94,14 +98,16 @@ const SleepingTimeBox = () => {
       </WakeupBox>
 
       <Modal
+        success={true}
         width="330px"
-        height="343px"
-        background="#4D4D4D"
+        height="233px"
+        background="#373543"
         textColor="#FFF"
         isModalOpen={isModalOpen}
         close={closeModal}
+        successFunc={successFunc}
         label="목표 기상 시간"
-        additional={<WakeupTimeSetting />}
+        additional={<WakeupSetting2 />}
       />
     </>
   );

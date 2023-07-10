@@ -16,6 +16,7 @@ const Diary = () => {
       <button onClick={openModal}>click</button>
       
       <Modal
+      success={false}
         isModalOpen={isModalOpen}
         close={closeModal}
         label="잘못된 이메일입니다!"
