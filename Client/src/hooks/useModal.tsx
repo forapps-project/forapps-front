@@ -1,18 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Modal from "../components/Modal";
+import { WakeUpTimeContext } from "../contexts/wakeupTimeReducer.context";
 
 export const useModal = () => {
-  /* 
-  const { open, close } = useContext(ModalsDispatchContext);
-
-  const openModal = (Component, props) => {
-    open(Component, props);
-  };
-
-  const closeModal = (Component) => {
-    close(Component)
-  }
-  */
+  const data = useContext(WakeUpTimeContext);
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -25,6 +16,7 @@ export const useModal = () => {
 
   const successFunc = (): void => {
     closeModal();
+    localStorage.setItem('user-wakeup-time', JSON.stringify(data))
   }
 
   return {

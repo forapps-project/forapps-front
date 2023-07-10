@@ -78,8 +78,8 @@ const PasswordPageLogin = () => {
         <Footer />
       </StyledGridDiv>
 
-      <Modal success={false} isModalOpen={isModalOpen} close={closeModal} label="잘못된 비밀번호입니다!" />
-      <Modal success={false} isModalOpen={modalOpen2} close={closeModal2} label={"입력하신 이메일로\n 임시 비밀번호를 전송했습니다:)"} />
+      {/* <Modal success={false} isModalOpen={isModalOpen} close={closeModal} label="잘못된 비밀번호입니다!" />
+      <Modal success={false} isModalOpen={modalOpen2} close={closeModal2} label={"입력하신 이메일로\n 임시 비밀번호를 전송했습니다:)"} /> */}
     </>
   );
 };

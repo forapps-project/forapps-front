@@ -14,6 +14,7 @@ interface modalProps {
   background: string;
   textColor: string;
   dimmed: string;
+  fontSize?: string;
 }
 
 interface defaultPropsType {
@@ -21,7 +22,6 @@ interface defaultPropsType {
   height: string;
   background: string;
 }
-
 
 const Wrapper = styled.div<defaultPropsType>`
   width: ${(props) => props.width};
@@ -37,25 +37,26 @@ const Wrapper = styled.div<defaultPropsType>`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 `;
 
 type dimmedProp = {
   dimmed: string;
-}
+};
 
 export const ModalBackdrop = styled.div<dimmedProp>`
   //딤처리
   z-index: 3;
   position: fixed;
-  display : flex;
-  justify-content : center;
-  align-items : center;
-  background-color: ${(props)=>props.dimmed};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${(props) => props.dimmed};
   border-radius: 10px;
-  top : 0;
-  left : 0;
-  right : 0;
-  bottom : 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 `;
 
 const InsideBox = styled.div`
@@ -63,16 +64,21 @@ const InsideBox = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 32px;
+  width: fit-content;
+  height: fit-content;
 `;
 
-const Body = styled.div``;
+const Body = styled.div`
+  height: fit-content;
+`;
 
 type TextColor = {
   textColor: string;
+  fontSize?: string;
 };
 
-const Contents = styled.h6<TextColor>`
-  font-size: 16px;
+const Label = styled.h6<TextColor>`
+  font-size: ${(props) => props.fontSize || "16px"};
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -80,6 +86,21 @@ const Contents = styled.h6<TextColor>`
   text-align: center;
   position: relative;
   top: 1.2px;
+  margin-bottom: 0;
+  white-space: pre-wrap;
+  color: ${(props) => props.textColor};
+  height: width;
+`;
+
+const Contents = styled.h6<TextColor>`
+  font-size: ${(props) => props.fontSize || "16px"};
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.32px;
+  text-align: center;
+  position: relative;
+  top: 16px;
   margin-bottom: 0;
   white-space: pre-wrap;
   color: ${(props) => props.textColor};
@@ -109,31 +130,35 @@ const Modal = ({
   background,
   textColor,
   dimmed,
+  fontSize,
 }: modalProps) => {
   return (
     <div>
       {isModalOpen && (
         <ModalBackdrop dimmed={dimmed}>
-        <Wrapper width={width} height={height} background={background}>
-          <InsideBox>
-            <Body>
-              <Contents textColor={textColor}>
-                {label.split("\n").map((letter, index) => (
-                  <div key={index}>
-                    {letter}
-                    <br />
-                  </div>
-                ))}
-              </Contents>
-              {additional ? (
-                <Contents textColor={textColor}>{additional}</Contents>
-              ) : null}
-            </Body>
-            <ModalButton className="close" onClick={success? successFunc : close}>
-              확인
-            </ModalButton>
-          </InsideBox>
-        </Wrapper>
+          <Wrapper width={width} height={height} background={background}>
+            <InsideBox>
+              <Body>
+                <Label textColor={textColor} fontSize={fontSize}>
+                  {label.split("\n").map((letter, index) => (
+                    <div key={index}>
+                      {letter}
+                      <br />
+                    </div>
+                  ))}
+                </Label>
+                {additional ? (
+                  <Contents textColor={textColor}>{additional}</Contents>
+                ) : null}
+              </Body>
+              <ModalButton
+                className="close"
+                onClick={success ? successFunc : close}
+              >
+                확인
+              </ModalButton>
+            </InsideBox>
+          </Wrapper>
         </ModalBackdrop>
       )}
     </div>
@@ -145,8 +170,7 @@ Modal.defaultProps = {
   height: "180px",
   background: "#FFF",
   textColor: "#4D4D4D",
-  dimmed:"rgba(0, 0, 0, 0.60);"
+  dimmed: "rgba(0, 0, 0, 0.60);",
 };
-
 
 export default Modal;

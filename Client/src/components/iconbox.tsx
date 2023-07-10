@@ -20,7 +20,6 @@ export const IconItems = [
   { icon: <Home />, text: "홈", route: "/main", id: 1 },
   { icon: <Edit />, text: "일지", route: "/diary", id: 2 },
   { icon: <Chat />, text: "커뮤니티", route: "/community", id: 3 },
-
   { icon: <Setting />, text: "설정", route: "setting", id: 5 },
 ];
 

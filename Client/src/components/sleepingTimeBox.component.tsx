@@ -1,6 +1,5 @@
-import { useEffect, useState, useContext, useRef } from "react";
+import { useContext } from "react";
 import axios from "axios";
-import { ReactComponent as Refresh } from "../icons/Refresh.svg";
 
 import { WakeUpTimeContext } from "../contexts/wakeupTimeReducer.context";
 import { useModal } from "../hooks/useModal";
@@ -14,12 +13,11 @@ import {
   NickNameText,
   Text,
 } from "../styles/sleepingTimeBox.styles";
-import WakeupTimeSetting from "./wakeupTimeSetting.component";
-import WakeupSetting2 from "./wakeupSetting2";
+import WakeupTime from "./wakeupTime.component";
 
 const SleepingTimeBox = () => {
-  const { Modal, isModalOpen, openModal, closeModal, successFunc } = useModal();
-  const { hour, minute, md } = useContext(WakeUpTimeContext);
+  const { Modal, isModalOpen, openModal, successFunc } = useModal();
+  let { hour, minute, md } = useContext(WakeUpTimeContext);
 
   let USER_NAME = "꿈꾸는 여행자";
   //유저 닉네임 GET
@@ -30,12 +28,9 @@ const SleepingTimeBox = () => {
     getUserName();
   },[]) */
 
-
-
   //현재시간
-  const [elapsedTime, setElapsedTime] = useState({ HOUR: 0, MIN: 0 });
-  let { HOUR, MIN } = elapsedTime;
-
+  let HOUR = 0;
+  let MIN = 0;
 
   let currentTime = null;
   let today = new Date();
@@ -50,11 +45,7 @@ const SleepingTimeBox = () => {
   let wakeupTime = null;
   if (hours <= 11) {
     //현재시각이 오전
-    if (md === "PM") {
-      wakeupTime = new Date(year, month, day, hour + 12, minute);
-    } else {
-      wakeupTime = new Date(year, month, day, hour + 12, minute);
-    }
+    wakeupTime = new Date(year, month, day, hour + 12, minute);
   } else {
     //현재가 오후
     if (md === "PM") {
@@ -77,11 +68,6 @@ const SleepingTimeBox = () => {
       <WakeupBox>
         <SleepingComent>
           <NickNameText>{`${USER_NAME}님,`}</NickNameText>
-          <Refresh
-            onClick={() => {
-              window.location.replace("/main");
-            }}
-          />
           <br></br>
           <Text>
             지금 잠들면{" "}
@@ -100,14 +86,14 @@ const SleepingTimeBox = () => {
       <Modal
         success={true}
         width="330px"
-        height="233px"
+        height="332px"
         background="#373543"
         textColor="#FFF"
         isModalOpen={isModalOpen}
-        close={closeModal}
         successFunc={successFunc}
-        label="목표 기상 시간"
-        additional={<WakeupSetting2 />}
+        label="기상 시간 선택"
+        additional={<WakeupTime />}
+        fontSize="20px"
       />
     </>
   );

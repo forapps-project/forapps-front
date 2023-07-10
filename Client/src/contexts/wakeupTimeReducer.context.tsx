@@ -10,7 +10,7 @@ export interface wakeUpTime {
   md: string;
 }
 
-export const INITIAL_VALUE: wakeUpTime = {
+export let INITIAL_VALUE: wakeUpTime = {
   hour: 8,
   minute: 0,
   md: "AM",
@@ -25,7 +25,6 @@ export const WakeUpTimeContext = createContext({} as wakeUpTime);
 
 export const DispatchContext = createContext<Dispatch<actionType> | null>(null);
 
-
 export const TimeSettingReducer = (
   state: wakeUpTime,
   action: actionType
@@ -35,23 +34,25 @@ export const TimeSettingReducer = (
   switch (type) {
     case "update":
       const { selectHour, selectMinute, selectMd } = payload;
-      return {hour: selectHour, minute: selectMinute, md: selectMd };
+      return {
+        hour: parseInt(selectHour),
+        minute: parseInt(selectMinute),
+        md: selectMd,
+      };
     default:
       return state;
   }
 };
 
-
 const WakeUpTimeProvider = ({ children }: wakeuptimeProviderProps) => {
-  const [{ hour, minute, md }, dispatch] = useReducer(
-    TimeSettingReducer,
-    INITIAL_VALUE
-  );
+  let Data = JSON.parse(localStorage.getItem("user-wakeup-time") || "{}");
+  if (Object.keys(Data).length === 0) {
+    Data = {...INITIAL_VALUE}
+  }
+
+  const [{ hour, minute, md }, dispatch] = useReducer(TimeSettingReducer, Data);
 
   const value: wakeUpTime = { hour, minute, md };
-
-  //localStorage.setItem('user-wakeup-time', JSON.stringify(value))
-  
 
   return (
     <DispatchContext.Provider value={dispatch}>
