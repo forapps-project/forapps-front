@@ -40,6 +40,7 @@ const PasswordPageLogin = () => {
       const res = await axios.post("/", {
         password: password,
       });
+      gotoMain("/main");
       /*
       server: 
       앞에서 작성한 이메일에 해당하는 패스워드를 찾기

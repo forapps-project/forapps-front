@@ -15,7 +15,7 @@ const NavBox = styled.nav`
   border-left: 0.4px solid var(--gray-3, #c4c4c4);
   background: var(--black-2, #2d2d2d);
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
-  z-index: 100;
+  z-index: 1;
 `;
 
 const Navigation = () => {

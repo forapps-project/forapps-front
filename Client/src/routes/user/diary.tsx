@@ -3,7 +3,7 @@ import Modal from "../../components/Modal";
 import { useModal } from "../../hooks/useModal";
 import ModalsProvider, { ModalsDispatchContext, ModalsStateContext } from "../../contexts/modalContext";
 import ReactModal from "react-modal";
-import "./reactModal.css"
+
 
 const Diary = () => {
   const { Modal, isModalOpen, closeModal, openModal } = useModal();

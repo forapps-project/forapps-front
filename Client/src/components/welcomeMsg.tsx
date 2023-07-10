@@ -4,7 +4,7 @@ const StyledDiv = styled.div`
   width: 270px;
   height: 105px;
   margin-left: 5%;
-  margin-top: 70px;
+  margin-top: 114px;
   margin-right: 100px;
   margin-bottom: 113px;
   

@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import { ReactComponent as Home } from "../icons/Home.svg";
 import { ReactComponent as Edit } from "../icons/Edit.svg";
@@ -41,12 +41,17 @@ const linkStyle = {
   color: "white",
 };
 
+const activeStyle = {
+  textDecoration: "none",
+  color: "#FFD954"
+}
+
 const IconBox = ({ key, icon, text, route }: IconBoxProps) => {
     return (
       <StyledDiv>
-        <Link to={route} style={linkStyle} key={key}>
+        <NavLink to={route} style={({isActive}) => (isActive ? activeStyle :linkStyle)} key={key}>
           {icon}
-        </Link>
+        </NavLink>
         <Text>{text}</Text>
       </StyledDiv>
     );

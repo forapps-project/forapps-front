@@ -2,7 +2,11 @@ import styled from "styled-components";
 import { useModal } from "../hooks/useModal";
 
 const StyledDiv = styled.div`
-  margin-top: 251px;
+width: 240px;
+  position: absolute;
+  bottom: 71px;
+  left: 50%;
+  transform: translate(-50%, 0%);
   color: var(--gray-2, #777);
   text-align: center;
   font-size: 10px;
@@ -21,7 +25,7 @@ const Footer = () => {
     <>
       <StyledDiv>
         <span>
-          로그인 시 몽글 서비스의{" "}
+          로그인 시 몽글 서비스의{" "}<br></br>
           <StyledSpan onClick={openModal}>
             이용약관 및 개인정보 보호정책
           </StyledSpan>
@@ -33,6 +37,7 @@ const Footer = () => {
         isModalOpen={isModalOpen}
         close={closeModal}
         label="개인정보 보호정책"
+        dimmed={"rgba(32, 32, 32, 0.90)"}
       />
     </>
   );

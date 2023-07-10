@@ -11,14 +11,56 @@ interface modalProps {
   height: string;
   background: string;
   textColor: string;
+  dimmed: string;
 }
+
+interface defaultPropsType {
+  width: string;
+  height: string;
+  background: string;
+}
+
+
+const Wrapper = styled.div<defaultPropsType>`
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  background-color: ${(props) => props.background};
+  border: none;
+  border-radius: 20px;
+  z-index: 1000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+type dimmedProp = {
+  dimmed: string;
+}
+
+export const ModalBackdrop = styled.div<dimmedProp>`
+  //딤처리
+  z-index: 3;
+  position: fixed;
+  display : flex;
+  justify-content : center;
+  align-items : center;
+  background-color: ${(props)=>props.dimmed};
+  border-radius: 10px;
+  top : 0;
+  left : 0;
+  right : 0;
+  bottom : 0;
+`;
 
 const InsideBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 32px;
-  
 `;
 
 const Body = styled.div``;
@@ -62,10 +104,12 @@ const Modal = ({
   height,
   background,
   textColor,
+  dimmed,
 }: modalProps) => {
   return (
     <div>
       {isModalOpen && (
+        <ModalBackdrop dimmed={dimmed}>
         <Wrapper width={width} height={height} background={background}>
           <InsideBox>
             <Body>
@@ -86,38 +130,19 @@ const Modal = ({
             </ModalButton>
           </InsideBox>
         </Wrapper>
+        </ModalBackdrop>
       )}
     </div>
   );
 };
-
-interface defaultPropsType {
-  width: string;
-  height: string;
-  background: string;
-}
 
 Modal.defaultProps = {
   width: "330px",
   height: "180px",
   background: "#FFF",
   textColor: "#4D4D4D",
+  dimmed:"rgba(32, 32, 32, 0.80)"
 };
 
-const Wrapper = styled.div<defaultPropsType>`
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
-  background-color: ${(props) => props.background};
-  border: 1px solid grey;
-  border-radius: 20px;
-  z-index: 1000;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
 
 export default Modal;
