@@ -1,17 +1,25 @@
 import styled from "styled-components";
 import { useModal } from "../hooks/useModal";
 
-const StyledDiv = styled.div`
-  width: 240px;
+const Wrapper = styled.div`
+  text-align: center;
+  width: 17rem;
   position: absolute;
-  bottom: 71px;
+  bottom: 6rem;
   left: 50%;
   transform: translate(-50%, 0%);
+`;
+
+const Span = styled.span`
+  display: inline-block;
   color: var(--gray-2, #777);
   text-align: center;
-  font-size: 10px;
+  font-family: Spoqa Han Sans Neo;
+  font-size: 0.75rem;
+  font-style: normal;
   font-weight: 500;
-  letter-spacing: -0.2px;
+  line-height: normal;
+  letter-spacing: -0.015rem;
 `;
 
 const StyledSpan = styled.span`
@@ -23,15 +31,15 @@ const Footer = () => {
 
   return (
     <>
-      <StyledDiv>
-        <span>
+      <Wrapper>
+        <Span>
           로그인 시 몽글 서비스의 <br></br>
           <StyledSpan onClick={openModal}>
             이용약관 및 개인정보 보호정책
           </StyledSpan>
           에 동의하게 됩니다.
-        </span>
-      </StyledDiv>
+        </Span>
+      </Wrapper>
 
       <Modal
         success={false}

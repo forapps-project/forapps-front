@@ -52,7 +52,6 @@ export const ModalBackdrop = styled.div<dimmedProp>`
   justify-content: center;
   align-items: center;
   background-color: ${(props) => props.dimmed};
-  border-radius: 10px;
   top: 0;
   left: 0;
   right: 0;

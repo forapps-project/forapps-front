@@ -6,9 +6,9 @@ import { theme } from "../styles/colortheme";
 interface ButtonStyle {
   width?: string;
   height?: string;
-  hasBorder?: boolean;
   borderRadius?: string;
   fontSize?: string;
+  background?: string;
 }
 
 interface ButtonProps
@@ -18,7 +18,7 @@ interface ButtonProps
   className?: string;
 }
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<ButtonStyle>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +31,7 @@ const StyledButton = styled.button`
   color: var(--main-white-1, #fff);
   border-radius: 12px;
   border-color: var(--sleeper-blue-1, #5581f1);
-  background: var(--sleeper-blue-1, #5581f1);
+  background: ${(props)=> props.background || "var(--sleeper-blue-1, #5581f1)"};
 `;
 
 function Button({ className, children, ...rest }: ButtonProps): ReactElement {

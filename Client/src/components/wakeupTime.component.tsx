@@ -14,7 +14,6 @@ const ContentsBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
 `;
 
 const Wrapper = styled.div`
@@ -23,38 +22,42 @@ const Wrapper = styled.div`
   width: fit-content;
   height: fit-content;
   background: #fff;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   border: 1.4px solid var(--gray-4, #dbdbdb);
   box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.4);
+  margin-bottom: 0.75rem;
 `;
 
 const SelectBox = styled.select`
   display: flex;
-  width: 220px;
-  height: 40px;
-  padding: 8px 16px;
+  width: 13.75rem;
+  height: 2.5rem;
+  padding: 0.5rem 1rem;
   justify-content: center;
   align-items: center;
+  gap: 15rem;
   font-size: 12px;
-  gap: 240px;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   border: none;
   background: transparent;
   -webkit-appearance: none;
   appearance: none;
   z-index: 4;
-
 `;
 
 const ButtonBox = styled.div`
   display: flex;
   width: fit-content;
   text-align: center;
-  gap: 16px;
-  top: 20px;
+  gap: 1rem;
+  position: relative;
 `;
 
-const MDbox = styled.div`
+type isactive = {
+  active: boolean;
+};
+
+const MDbox = styled.div<isactive>`
   width: 50px;
   height: 31px;
   font-size: 12px;
@@ -68,7 +71,7 @@ const MDbox = styled.div`
   align-items: center;
   gap: 10px;
   border-radius: 8px;
-  background: var(--sleeper-purple-1, #734ef7);
+  background: ${(props) => (props.active === true ? "#734EF7" : "#C4C4C4")};
 `;
 
 const WakeupTime = () => {
@@ -82,6 +85,14 @@ const WakeupTime = () => {
     selectMd: md,
   });
   const { selectHour, selectMinute, selectMd } = selected;
+
+  //버튼 색을 동적으로 제어하기 위한 변수
+  let [active, setActive] = useState(true);
+  if (md === "AM") {
+    active = true;
+  } else {
+    active = false;
+  }
 
   const handleSelect = (e: any) => {
     setSelected({ ...selected, [e.target.name]: e.target.value });
@@ -121,14 +132,22 @@ const WakeupTime = () => {
 
       <ButtonBox>
         <MDbox
+          active={active}
           className="am"
-          onClick={() => setSelected({ ...selected, selectMd: "AM" })}
+          onClick={() => {
+            setSelected({ ...selected, selectMd: "AM" });
+            setActive((prev) => !prev);
+          }}
         >
           AM
         </MDbox>
         <MDbox
+          active={!active}
           className="pm"
-          onClick={() => setSelected({ ...selected, selectMd: "PM" })}
+          onClick={() => {
+            setSelected({ ...selected, selectMd: "PM" });
+            setActive((prev) => !prev);
+          }}
         >
           PM
         </MDbox>

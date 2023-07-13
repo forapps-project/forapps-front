@@ -6,9 +6,11 @@ import { useModal } from "../hooks/useModal";
 import { ReactComponent as Expand } from "../icons/Expand.svg";
 
 import {
+  Wrapper,
   WakeupBox,
+  Contents,
   WakeupSetting,
-  SleepingComent,
+  SleepingComment,
   SleepingHour,
   NickNameText,
   Text,
@@ -35,7 +37,7 @@ const SleepingTimeBox = () => {
   let currentTime = null;
   let today = new Date();
   let year = today.getFullYear();
-  let month = today.getMonth() + 1;
+  let month = today.getMonth();
   let day = today.getDate();
   let hours = today.getHours();
   let minutes = today.getMinutes();
@@ -43,9 +45,19 @@ const SleepingTimeBox = () => {
 
   //기상시간
   let wakeupTime = null;
-  if (hours <= 11) {
+  if (hours <= 6) {
     //현재시각이 오전
-    wakeupTime = new Date(year, month, day, hour + 12, minute);
+    if (md === "PM") {
+      wakeupTime = new Date(year, month, day, hour + 12, minute);
+    } else {
+      wakeupTime = new Date(year, month, day, hour, minute);
+    }
+  } else if (hours <= 11) {
+    if (md === "PM") {
+      wakeupTime = new Date(year, month, day + 1, hour + 12, minute);
+    } else {
+      wakeupTime = new Date(year, month, day + 1, hour, minute);
+    }
   } else {
     //현재가 오후
     if (md === "PM") {
@@ -65,23 +77,27 @@ const SleepingTimeBox = () => {
 
   return (
     <>
+    <Wrapper>
       <WakeupBox>
-        <SleepingComent>
-          <NickNameText>{`${USER_NAME}님,`}</NickNameText>
-          <br></br>
-          <Text>
-            지금 잠들면{" "}
-            <SleepingHour>
-              {`${HOUR}`}시간 {`${MIN}`}분
-            </SleepingHour>{" "}
-            여행할 수 있어요:)
-          </Text>
-        </SleepingComent>
-        <WakeupSetting>
-          <span onClick={openModal}>기상시간 설정하기</span>
-          <Expand />
-        </WakeupSetting>
+        <Contents>
+          <SleepingComment>
+            <NickNameText>{`${USER_NAME}님,`}</NickNameText>
+            <br></br>
+            <Text>
+              지금 잠들면{" "}
+              <SleepingHour>
+                {`${HOUR}`}시간 {`${MIN}`}분
+              </SleepingHour>{" "}
+              여행할 수 있어요:)
+            </Text>
+          </SleepingComment>
+          <WakeupSetting>
+            <span onClick={openModal}>기상시간 설정하기</span>
+            <Expand />
+          </WakeupSetting>
+        </Contents>
       </WakeupBox>
+    </Wrapper>
 
       <Modal
         success={true}

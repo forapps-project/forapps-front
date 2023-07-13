@@ -1,21 +1,21 @@
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
-  width: 270px;
-  height: 105px;
+  width: fit-content;
+  height: fit-content;
   margin-left: 5%;
-  margin-top: 114px;
-  margin-right: 100px;
-  margin-bottom: 113px;
-  
+  position: relative;
+  top: 7.12rem;
+
   h3 {
+    font-size: 1.75rem;
+    font-style: normal;
     font-weight: 700;
-    font-size: 28px;
-    line-height: 35px;
-    letter-spacing: -0.56px;
+    line-height: normal;
+    letter-spacing: -0.035rem;
     color: #202020;
   }
-  
+
   span {
     color: var(--sleeper-blue-2, #6b85f7);
   }
@@ -24,9 +24,9 @@ const StyledDiv = styled.div`
 const WelcomeMsg = () => {
   return (
     <StyledDiv>
-      <h3>안녕하세요!</h3>
-      <h3>숙면 여행을 위한 가이드</h3>
       <h3>
+        안녕하세요!<br></br>숙면 여행을 위한 가이드
+        <br></br>
         <span>몽글</span>입니다
       </h3>
     </StyledDiv>
