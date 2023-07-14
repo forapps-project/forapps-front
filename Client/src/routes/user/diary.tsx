@@ -5,6 +5,7 @@ import ModalsProvider, { ModalsDispatchContext, ModalsStateContext } from "../..
 import ReactModal from "react-modal";
 
 
+
 const Diary = () => {
   const { Modal, isModalOpen, closeModal, openModal } = useModal();
   //const { openModal, closeModal } = useContext(ModalsDispatchContext);
@@ -14,6 +15,8 @@ const Diary = () => {
     <div>
       This is Diary page.
       <button onClick={openModal}>click</button>
+
+
       
       <Modal
       success={false}

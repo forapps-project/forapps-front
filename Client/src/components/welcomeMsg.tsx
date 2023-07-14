@@ -10,14 +10,14 @@ const StyledDiv = styled.div`
   h3 {
     font-size: 1.75rem;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 500;
     line-height: normal;
     letter-spacing: -0.035rem;
-    color: #202020;
+    color: var(--white, #FFF);
   }
 
   span {
-    color: var(--sleeper-blue-2, #6b85f7);
+    color: var(--sleeper-yellow, #FFD954);
   }
 `;
 

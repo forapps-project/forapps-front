@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ContentsBox from "../../components/contentsBox.component";
 import SleepingTimeBox from "../../components/sleepingTimeBox.component";
 
-import background from "../../images/main-background.png";
+
 
 const StyledHDiv = styled.div`
   display: grid;
@@ -13,10 +13,7 @@ const StyledHDiv = styled.div`
     rgba(41, 41, 41, 1) 60%,
     rgba(162, 136, 255, 1)
   ); */
-  background-image: url(${background});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+
 `;
 
 const LogoBox = styled.div`

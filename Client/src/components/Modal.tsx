@@ -83,8 +83,9 @@ const Label = styled.h6<TextColor>`
   line-height: normal;
   letter-spacing: -0.32px;
   text-align: center;
-  position: relative;
-  top: 1.2px;
+
+
+  text-align: center;
   margin-bottom: 0;
   white-space: pre-wrap;
   color: ${(props) => props.textColor};
@@ -115,6 +116,8 @@ const ModalButton = styled(Button)`
   align-items: center;
   flex-shrink: 0;
   font-size: 16px;
+  position: relative;
+  top: 1.5rem;
 `;
 
 const Modal = ({

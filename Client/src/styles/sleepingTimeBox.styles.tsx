@@ -51,6 +51,7 @@ export const NickNameText = styled.span`
 
 export const Text = styled.span`
   color: #fff;
+  font-family: Spoqa Han Sans Neo;
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
