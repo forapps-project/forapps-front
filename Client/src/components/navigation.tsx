@@ -23,8 +23,8 @@ const Navigation = () => {
     <NavBox>
       {IconItems.map((item) => (
         <IconBox
-          key={item.id}
-          icon={item.icon}
+          key={item.key}
+          iconName={item.iconName}
           text={item.text}
           route={item.route}
         />

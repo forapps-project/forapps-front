@@ -2,8 +2,6 @@ import { useContext, useState } from "react";
 import Modal from "../../components/Modal";
 import { useModal } from "../../hooks/useModal";
 import ModalsProvider, { ModalsDispatchContext, ModalsStateContext } from "../../contexts/modalContext";
-import ReactModal from "react-modal";
-
 
 
 const Diary = () => {
@@ -15,8 +13,6 @@ const Diary = () => {
     <div>
       This is Diary page.
       <button onClick={openModal}>click</button>
-
-
       
       <Modal
       success={false}
@@ -24,9 +20,6 @@ const Diary = () => {
         close={closeModal}
         label="잘못된 이메일입니다!"
       />
-      {/* <ReactModal isOpen={isOpen} className={"modal-box"} overlayClassName={"dimmed"}>
-      </ReactModal>
-      <button onClick={()=>setIsopen(true)}>Test</button> */}
 
     </div>
   );

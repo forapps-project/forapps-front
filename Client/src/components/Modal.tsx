@@ -69,6 +69,8 @@ const InsideBox = styled.div`
 
 const Body = styled.div`
   height: fit-content;
+  position: relative;
+  top: -1rem;
 `;
 
 type TextColor = {
@@ -83,13 +85,9 @@ const Label = styled.h6<TextColor>`
   line-height: normal;
   letter-spacing: -0.32px;
   text-align: center;
-
-
-  text-align: center;
   margin-bottom: 0;
   white-space: pre-wrap;
   color: ${(props) => props.textColor};
-  height: width;
 `;
 
 const Contents = styled.h6<TextColor>`

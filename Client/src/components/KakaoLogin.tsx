@@ -31,9 +31,8 @@ const KakaoButton = styled(Button)`
 `;
 
 
-
 const KakaoLogin = () => {
-  const link = "http://43.200.203.22:8080/oauth2/authorization/kakao";
+  const link = "url";
 
   const loginHandler = () => {
     window.location.href = link;

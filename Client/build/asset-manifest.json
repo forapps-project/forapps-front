@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.dbcf5f9f.css",
+    "main.js": "/static/js/main.8db462cc.js",
+    "static/js/787.09ab0d27.chunk.js": "/static/js/787.09ab0d27.chunk.js",
+    "service-worker.js": "/service-worker.js",
+    "static/media/main-background.png": "/static/media/main-background.1fa1040d7bf44aa22a53.png",
+    "static/media/Setting.svg": "/static/media/Setting.9bd3b4190bb7445c3d1da91ce90bbc04.svg",
+    "static/media/kakao2.svg": "/static/media/kakao2.35a6eab3eba05816fe14fdda60070fa3.svg",
+    "static/media/Edit.svg": "/static/media/Edit.e5cf48303031579b714eb6769d53145f.svg",
+    "static/media/Chat.svg": "/static/media/Chat.2f56e5ca5904b9bfea09db313811fa53.svg",
+    "static/media/Home.svg": "/static/media/Home.34b8e59cbf9243fab6bf726329283edf.svg",
+    "index.html": "/index.html",
+    "static/media/Expand_Down.svg": "/static/media/Expand_Down.770c80d0b6b05ad3aedd3943d2105da7.svg",
+    "static/media/Expand.svg": "/static/media/Expand.c8ef51d1c997a5016855240f6f0f007b.svg",
+    "main.dbcf5f9f.css.map": "/static/css/main.dbcf5f9f.css.map",
+    "main.8db462cc.js.map": "/static/js/main.8db462cc.js.map",
+    "787.09ab0d27.chunk.js.map": "/static/js/787.09ab0d27.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dbcf5f9f.css",
+    "static/js/main.8db462cc.js"
+  ]
+}

@@ -10,16 +10,16 @@ export interface wakeUpTime {
   md: string;
 }
 
+interface actionType {
+  type: string;
+  payload?: any;
+}
+
 export let INITIAL_VALUE: wakeUpTime = {
   hour: 8,
   minute: 0,
   md: "AM",
 };
-
-interface actionType {
-  type: string;
-  payload?: any;
-}
 
 export const WakeUpTimeContext = createContext({} as wakeUpTime);
 

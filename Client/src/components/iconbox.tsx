@@ -1,26 +1,21 @@
-import { ReactNode } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { ReactElement, ReactNode, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
-import { ReactComponent as Home } from "../icons/Home.svg";
-import { ReactComponent as Edit } from "../icons/Edit.svg";
-import { ReactComponent as Chat } from "../icons/Chat.svg";
-import { ReactComponent as Flag } from "../icons/Flag.svg";
-import { ReactComponent as Setting } from "../icons/Setting.svg";
-
-import styled from "styled-components";
+import styled, {css} from "styled-components";
+import Icon, { IconType } from "./iconFactory";
 
 interface IconBoxProps {
-    icon: ReactNode;
-    text: string;
-    route: string;
-    key: number;
-  };
+  iconName: IconType;
+  text: string;
+  route: string;
+  key: number;
+}
 
-export const IconItems = [
-  { icon: <Home />, text: "홈", route: "/main", id: 1 },
-  { icon: <Edit />, text: "일지", route: "/diary", id: 2 },
-  { icon: <Chat />, text: "커뮤니티", route: "/community", id: 3 },
-  { icon: <Setting />, text: "설정", route: "setting", id: 5 },
+export const IconItems:IconBoxProps[] = [
+  { iconName: "home", text: "홈", route: "/main", key: 1 },
+  { iconName: "edit", text: "일지", route: "/diary", key: 2 },
+  { iconName: "chat", text: "커뮤니티", route: "/community", key: 3 },
+  { iconName: "setting", text: "설정", route: "/setting", key: 5 },
 ];
 
 const StyledDiv = styled.div`
@@ -30,30 +25,29 @@ const StyledDiv = styled.div`
   align-items: center;
 `;
 
-const Text = styled.span`
-  font-size: 12px;
-  color: var(--gray-2, #777);
-`;
-
-const linkStyle = {
-  textDecoration: "none",
-  color: "white",
-};
-
-const activeStyle = {
-  textDecoration: "none",
-  color: "#FFD954"
+type textProp = {
+  active: boolean;
 }
 
-const IconBox = ({ icon, text, route }: IconBoxProps) => {
-    return (
-      <StyledDiv>
-        <NavLink to={route} style={({isActive}) => (isActive ? activeStyle :linkStyle)}>
-          {icon}
-        </NavLink>
-        <Text>{text}</Text>
-      </StyledDiv>
-    );
+const Text = styled.span<textProp>`
+  font-size: 12px;
+  color: ${(props) => props.active? "#FFD954" : "#4D4D4D"};
+`;
+
+
+
+const IconBox = ({ iconName, text, route }: IconBoxProps) => {
+  const location = useLocation();
+  const { pathname } = location;
+
+  return (
+    <StyledDiv>
+      <NavLink to={route}>
+        <Icon icon={iconName}  />
+      </NavLink>
+      <Text active={route === pathname}>{text}</Text>
+    </StyledDiv>
+  );
 };
 
 export default IconBox;

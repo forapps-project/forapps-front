@@ -12,7 +12,7 @@ export const WakeupBox = styled.div`
   display: inline-block;
   height: 6.25rem;
   width: 21.875rem;
-  border: 1px solid transparent;
+  border: 0.8px solid transparent;
   border-radius: 0.75rem;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
   background-image: linear-gradient(#2d293d, #2d293d),
