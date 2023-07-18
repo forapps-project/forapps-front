@@ -19,7 +19,8 @@ import {
 } from "../styles/wakeupTime.component.styles";
 
 const WakeupTime = () => {
-  const selectRef = useRef() as React.MutableRefObject<HTMLLIElement>;
+  const hourSelectRef = useRef() as React.MutableRefObject<HTMLLIElement>;
+  const minuteSelectRef = useRef() as React.MutableRefObject<HTMLLIElement>;
 
   const { hour, minute, md } = useContext(WakeUpTimeContext);
   const dispatch = useContext(DispatchContext);
@@ -52,10 +53,12 @@ const WakeupTime = () => {
       setCurrentMinute(innerText);
       setSelected({ ...selected, selectMinute: innerText });
     }
+    setShowHours(false);
+    setShowMinutes(false);
   };
 
-  /* useEffect(() => {
-    document.addEventListener("click", touchOutside);
+  useEffect(() => {
+      document.addEventListener("click", touchOutside);
 
     return () => {
       document.removeEventListener("click", touchOutside);
@@ -63,10 +66,13 @@ const WakeupTime = () => {
   });
 
   const touchOutside = (e: any) => {
-    if (showHours && ) {
+    if (showHours && !hourSelectRef.current.contains(e.target)) {
       setShowHours(false);
     }
-  }; */
+    if (showMinutes && !minuteSelectRef.current.contains(e.target)) {
+      setShowMinutes(false);
+    }
+  };
 
   //버튼 색을 동적으로 제어
   let [active, setActive] = useState(true);
@@ -79,15 +85,14 @@ const WakeupTime = () => {
   return (
     <ContentsBox>
       <SelectArea>
-        <SelectBox onClick={() => setShowHours((prev) => !prev)}>
-          <Wrapper>
+        <SelectBox ref={hourSelectRef}>
+          <Wrapper onClick={() => setShowHours((prev) => !prev)}>
             <label>{currentHour}</label>
             <Expand />
           </Wrapper>
-          <SelectOptions show={showHours} height="12.3rem">
+          <SelectOptions show={showHours} height="12.3rem" >
             {hours.map((item: number) => (
               <Option
-                ref={selectRef}
                 value={item}
                 key={item}
                 onClick={handleOnClick}
@@ -99,15 +104,14 @@ const WakeupTime = () => {
           </SelectOptions>
         </SelectBox>
 
-        <SelectBox onClick={() => setShowMinutes((prev) => !prev)}>
-          <Wrapper>
+        <SelectBox ref={minuteSelectRef}>
+          <Wrapper onClick={() => setShowMinutes((prev) => !prev)}>
             <label>{currentMinute}</label>
             <Expand />
           </Wrapper>
           <SelectOptions show={showMinutes}>
             {minutes.map((item: number) => (
               <Option
-                ref={selectRef}
                 value={item}
                 key={item}
                 onClick={handleOnClick}

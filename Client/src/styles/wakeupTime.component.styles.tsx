@@ -14,7 +14,11 @@ export const SelectArea = styled.div`
   position: relative;
 `
 
-export const SelectBox = styled.div`
+type selectBoxProps = {
+  ref?: any;
+}
+
+export const SelectBox = styled.div<selectBoxProps>`
   position: relative;
   background-color: white;
   border-radius: 0.25rem;
@@ -76,7 +80,7 @@ export const SelectOptions = styled.ul<state>`
 } */
 
 type optionType = {
-  ref: any;
+  ref?: any;
 }
 
 export const Option = styled.li<optionType>`
