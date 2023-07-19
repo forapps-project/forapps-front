@@ -1,12 +1,13 @@
 import Button from "./button.component";
 import { ReactComponent as Kakao } from "../icons/kakao2.svg";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
   text-align: center;
   width: 100%;
   position: relative;
-  top: 17rem;
+  top: 20rem;
 `;
 
 const KakaoButton = styled(Button)`
@@ -30,18 +31,25 @@ const KakaoButton = styled(Button)`
   letter-spacing: -0.02rem;
 `;
 
+const KakaoIcon = styled(Kakao)`
+  position: relative;
+  right: 6rem;
+`
+
 
 const KakaoLogin = () => {
-  const link = "url";
+  //const link = "url";
+  const navigate = useNavigate();
 
   const loginHandler = () => {
-    window.location.href = link;
+    //window.location.href = link;
+    navigate("/main");
   };
 
   return (
     <Wrapper>
       <KakaoButton onClick={loginHandler}>
-        <Kakao />
+        <KakaoIcon />
         카카오 로그인
       </KakaoButton>
     </Wrapper>

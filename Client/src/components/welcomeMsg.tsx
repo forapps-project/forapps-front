@@ -5,7 +5,7 @@ const StyledDiv = styled.div`
   height: fit-content;
   margin-left: 5%;
   position: relative;
-  top: 7.12rem;
+  top: 6rem;
 
   h3 {
     font-size: 1.75rem;
@@ -13,11 +13,22 @@ const StyledDiv = styled.div`
     font-weight: 500;
     line-height: normal;
     letter-spacing: -0.035rem;
-    color: var(--white, #FFF);
+    color: var(--white, #fff);
   }
 
   span {
-    color: var(--sleeper-yellow, #FFD954);
+    color: var(--sleeper-yellow, #ffd954);
+  }
+
+  p {
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: -0.02rem;
+    color: #c4c4c4;
+    position: relative;
+    top: 2rem;
   }
 `;
 
@@ -29,6 +40,9 @@ const WelcomeMsg = () => {
         <br></br>
         <span>몽글</span>입니다
       </h3>
+      <p>
+        숙면 여행의 시작을 위한 모든 것<br></br>꿈을 쓰는 글, 몽글
+      </p>
     </StyledDiv>
   );
 };

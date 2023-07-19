@@ -12,18 +12,18 @@ const Wrapper = styled.div`
 
 const Span = styled.span`
   display: inline-block;
-  color: var(--gray-2, #777);
+  color: var(--gray-2, #DBDBDB);
   text-align: center;
   font-family: Spoqa Han Sans Neo;
   font-size: 0.75rem;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: normal;
   letter-spacing: -0.015rem;
 `;
 
 const StyledSpan = styled.span`
-  font-weight: bold;
+  font-weight: 700;
 `;
 
 const Footer = () => {

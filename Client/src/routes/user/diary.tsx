@@ -1,19 +1,17 @@
 import { useContext, useState } from "react";
-import Modal from "../../components/Modal";
 import { useModal } from "../../hooks/useModal";
-import ModalsProvider, { ModalsDispatchContext, ModalsStateContext } from "../../contexts/modalContext";
+import "react-pull-to-refresh"
 
 
 const Diary = () => {
   const { Modal, isModalOpen, closeModal, openModal } = useModal();
-  //const { openModal, closeModal } = useContext(ModalsDispatchContext);
-  //const [isOpen,setIsopen] = useState(false)
 
   return (
-    <div>
+    <div >
       This is Diary page.
       <button onClick={openModal}>click</button>
       
+
       <Modal
       success={false}
         isModalOpen={isModalOpen}

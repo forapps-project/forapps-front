@@ -1,0 +1,31 @@
+
+/* home, edit */
+.active > g > path[id="Rectangle 1"] {
+    stroke: var(--sleeper-yellow);
+}
+
+/* home */
+.active > g >  path[id="Vector 3"]  {
+    stroke: var(--sleeper-yellow);
+}
+
+/* chat icon */
+.active > g > path[id="Union"] {
+    stroke: var(--sleeper-yellow);
+}
+.active > g > path[id="Vector 7"] {
+    stroke: var(--sleeper-yellow);
+}
+.active > g > path[id="Vector 8"] {
+    stroke: var(--sleeper-yellow);
+}
+
+/* edit */
+.active > g > path[id="Vector 107"] {
+    fill: var(--sleeper-yellow);
+}
+
+/* setting */
+.active > g > path[id="Subtract"] {
+    fill: var(--sleeper-yellow);
+}

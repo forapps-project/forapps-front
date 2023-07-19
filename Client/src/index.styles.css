@@ -13,10 +13,10 @@
 }
 
 :root {
-    --sleeper-purple: #734EF7,
-    --sleeper-blue1: #5581f1,
-    --sleeper-blue2: #6B85F7,
-    --gray-3: #c4c4c4,
-    --white: #fff,
-
+    --sleeper-purple: #734EF7;
+    --sleeper-blue1: #5581f1;
+    --sleeper-blue2: #6B85F7;
+    --sleeper-yellow: #FFD954;
+    --gray-3: #c4c4c4;
+    --white: #fff;
 }

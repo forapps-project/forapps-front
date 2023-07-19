@@ -1,7 +1,6 @@
-import { ReactElement, ReactNode, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 import Icon, { IconType } from "./iconFactory";
 
 interface IconBoxProps {
@@ -31,9 +30,8 @@ type textProp = {
 
 const Text = styled.span<textProp>`
   font-size: 12px;
-  color: ${(props) => props.active? "#FFD954" : "#4D4D4D"};
+  color: ${(props) => props.active? "#FFD954" : "#777777"};
 `;
-
 
 
 const IconBox = ({ iconName, text, route }: IconBoxProps) => {
@@ -43,7 +41,7 @@ const IconBox = ({ iconName, text, route }: IconBoxProps) => {
   return (
     <StyledDiv>
       <NavLink to={route}>
-        <Icon icon={iconName}  />
+        <Icon icon={iconName} isActive={route === pathname} />
       </NavLink>
       <Text active={route === pathname}>{text}</Text>
     </StyledDiv>
