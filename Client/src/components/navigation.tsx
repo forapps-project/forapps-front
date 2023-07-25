@@ -1,4 +1,4 @@
-import IconBox, {IconItems} from "./iconbox";
+import IconBox, {IconItems} from "./icon/iconbox";
 import styled from "styled-components";
 
 const NavBox = styled.nav`

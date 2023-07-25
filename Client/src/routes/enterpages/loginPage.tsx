@@ -1,7 +1,7 @@
-import EmailForm from "../../components/emailForm";
+import EmailForm from "../../components/login/emailForm";
 import styled from "styled-components";
-import WelcomeMsg from "../../components/welcomeMsg";
-import Footer from "../../components/footer";
+import WelcomeMsg from "../../components/login/welcomeMsg";
+import Footer from "../../components/login/footer";
 
 export const StyledGridDiv = styled.div`
   display: grid;
@@ -12,10 +12,10 @@ const Statusbar = styled.div`
   background-color: grey;
   position: fixed;
   top: 0;
-  width:390px;
+  width: 390px;
   height: 44px;
   text-align: center;
-`
+`;
 const LoginPage = () => {
   return (
     <StyledGridDiv>

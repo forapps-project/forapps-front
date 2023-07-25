@@ -5,7 +5,7 @@ import {
   WakeUpTimeContext,
 } from "../contexts/wakeupTimeReducer.context";
 import { hours, minutes } from "../utils/select-options";
-import { ReactComponent as Expand } from "../icons/Expand_Down.svg";
+import { ReactComponent as Expand } from "../svg/Expand_Down.svg";
 
 import {
   ContentsBox,
@@ -55,8 +55,6 @@ const WakeupTime = () => {
     }
     setShowHours(false);
     setShowMinutes(false);
-
-
   };
 
   useEffect(() => {

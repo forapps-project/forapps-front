@@ -3,7 +3,7 @@ import axios from "axios";
 
 import { WakeUpTimeContext } from "../contexts/wakeupTimeReducer.context";
 import { useModal } from "../hooks/useModal";
-import { ReactComponent as Expand } from "../icons/Expand.svg";
+import { ReactComponent as Expand } from "../svg/Expand.svg";
 
 import {
   Wrapper,

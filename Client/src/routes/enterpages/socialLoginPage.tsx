@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import WelcomeMsg from "../../components/welcomeMsg";
-import Footer from "../../components/footer";
-import KakaoLogin from "../../components/KakaoLogin";
+import WelcomeMsg from "../../components/login/welcomeMsg";
+import Footer from "../../components/login/footer";
+import KakaoLogin from "../../components/login/KakaoLogin";
 
 export const StyledGridDiv = styled.div`
   

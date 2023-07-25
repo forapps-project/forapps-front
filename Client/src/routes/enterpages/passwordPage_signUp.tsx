@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import WelcomeMsg from "../../components/welcomeMsg";
-import Footer from "../../components/footer";
+import WelcomeMsg from "../../components/login/welcomeMsg";
+import Footer from "../../components/login/footer";
 
-import { StyledDiv } from "../../components/emailForm";
+import { StyledDiv } from "../../components/login/emailForm";
 import { StyledGridDiv } from "./loginPage";
 import Button from "../../components/button.component";
 
@@ -27,9 +27,8 @@ const PasswordPageSignup = () => {
       gotoMain("/main"); //메인으로 이동
       */
     } catch {
-      console.log('error occurred')
+      console.log("error occurred");
     }
-    
   };
 
   return (

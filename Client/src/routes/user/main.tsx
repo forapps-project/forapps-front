@@ -1,8 +1,5 @@
 import styled from "styled-components";
-import ContentsBox from "../../components/contentsBox.component";
 import SleepingTimeBox from "../../components/sleepingTimeBox.component";
-import { useLocation } from "react-router-dom";
-
 
 
 const StyledHDiv = styled.div`
@@ -14,7 +11,6 @@ const StyledHDiv = styled.div`
     rgba(41, 41, 41, 1) 60%,
     rgba(162, 136, 255, 1)
   ); */
-
 `;
 
 const LogoBox = styled.div`
@@ -40,7 +36,7 @@ const Main = () => {
         <LogoText>몽글</LogoText>
       </LogoBox>
       <SleepingTimeBox />
-      <ContentsBox />
+
     </StyledHDiv>
   );
 };

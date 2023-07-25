@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import WelcomeMsg from "../../components/welcomeMsg";
-import Footer from "../../components/footer";
-import { StyledDiv } from "../../components/emailForm";
+import WelcomeMsg from "../../components/login/welcomeMsg";
+import Footer from "../../components/login/footer";
+import { StyledDiv } from "../../components/login/emailForm";
 import { StyledGridDiv } from "./loginPage";
 import Button from "../../components/button.component";
 import { useModal } from "../../hooks/useModal";
@@ -17,24 +17,28 @@ const StyledSpan = styled.span`
   letter-spacing: -0.24px;
   width: 100%;
   text-align: end;
-  color: var(--gray-3, #C4C4C4);
+  color: var(--gray-3, #c4c4c4);
   cursor: pointer;
 `;
 
 const PasswordPageLogin = () => {
-  const {Modal, isModalOpen, openModal, closeModal} = useModal();
+  const { Modal, isModalOpen, openModal, closeModal } = useModal();
 
   const [modalOpen2, setModalOpen2] = useState<boolean>(false);
-  const openModal2 = () => {setModalOpen2(true)}
-  const closeModal2 = () => {setModalOpen2(false)}
+  const openModal2 = () => {
+    setModalOpen2(true);
+  };
+  const closeModal2 = () => {
+    setModalOpen2(false);
+  };
 
   const [password, setPassword] = useState<string>("");
   const gotoMain = useNavigate();
-  
+
   const handleClick = async (e: any) => {
     e.preventDefault();
     if (password === "") return;
-    
+
     /* 서버로 password post */
     try {
       const res = await axios.post("/", {
@@ -52,7 +56,7 @@ const PasswordPageLogin = () => {
       openModal(); //비밀번호 틀렸다는 모달창 띄우기
       */
     } catch {
-      console.log('error occurred')
+      console.log("error occurred");
     }
   };
 

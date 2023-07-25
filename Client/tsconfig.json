@@ -19,8 +19,5 @@
   "include": [
     "src",
     "src/custom.d.ts"
-    /* "../setupProxy.js",
-    "Client/src/App.tsx",
-    "Client/src/routes/enterpages" */
   ]
 }
