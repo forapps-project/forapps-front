@@ -1,18 +1,10 @@
 import { useState } from "react";
-import { format, addMonths, subMonths, startOfMonth } from "date-fns";
-
-import { ReactComponent as Expand } from "../../svg/Expand.svg";
+import { addMonths, subMonths } from "date-fns";
 
 import { RenderDays } from "./RenderDays";
 import { RenderHeader } from "./RenderHeader";
 import { RenderCells } from "./RenderCells";
 import styled from "styled-components";
-
-interface headerProps {
-  currentMonth: Date;
-  prevMonth(): void;
-  nextMonth(): void;
-}
 
 const Wrapper = styled.div`
   width: 21.875rem;

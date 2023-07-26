@@ -1,8 +1,3 @@
-import { useState } from "react";
-import { format, addMonths, subMonths, startOfMonth } from "date-fns";
-
-import { ReactComponent as Expand } from "../../svg/Expand.svg";
-import { headerProps } from "./RenderHeader";
 import styled from "styled-components";
 
 const Days = styled.div`
