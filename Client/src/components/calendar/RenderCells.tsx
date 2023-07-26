@@ -18,20 +18,17 @@ const Cells = styled.div`
 const DayBox = styled.div`
   padding: 0;
   width: fit-content;
-`
+`;
 
 type dayprops = {
   display: string;
 };
 
 const Day = styled.span<dayprops>`
-    display: ${(props) => (props.display === 'true' ? "block" : "none")};
+  display: ${(props) => (props.display === "true" ? "block" : "none")};
 `;
 
-export const RenderCells = ({
-  currentMonth,
-  onDateClick,
-}: headerProps) => {
+export const RenderCells = ({ currentMonth, onDateClick }: headerProps) => {
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(monthStart);
   const startDate = startOfWeek(monthStart);
@@ -49,7 +46,7 @@ export const RenderCells = ({
 
       days.push(
         <DayBox className="col cell">
-          <Day display={isSameMonth(day, monthStart) ? 'true' : 'false'}>
+          <Day display={isSameMonth(day, monthStart) ? "true" : "false"}>
             {formattedDate}
           </Day>
         </DayBox>
